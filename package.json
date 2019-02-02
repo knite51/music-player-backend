@@ -5,9 +5,6 @@
   "repository": "git@github.com:knite51/music-player-backend.git",
   "author": "kniteDeveloper <knite51@gmail.com>",
   "license": "MIT",
-  "jest": {
-    "testEnvironment": "node"
-  },
   "scripts": {
     "test": "jest --verbose --silent --i --coverage --forceExit",
     "start": "node ./server.js"
