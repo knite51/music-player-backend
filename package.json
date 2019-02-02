@@ -2,7 +2,7 @@
   "name": "music-player-server",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/knite51/music-player-backend.git",
+  "repository": "git@github.com:knite51/music-player-backend.git",
   "author": "kniteDeveloper <knite51@gmail.com>",
   "license": "MIT",
   "scripts": {
