@@ -1,14 +1,21 @@
 {
   "name": "music-player-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "git@github.com:knite51/music-player-backend.git",
   "author": "kniteDeveloper <knite51@gmail.com>",
   "license": "MIT",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "scripts": {
+    "test": "jest --verbose --silent --i --coverage --forceExit",
     "start": "node ./server.js"
   },
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "jest": "22.4.3"
   }
 }
