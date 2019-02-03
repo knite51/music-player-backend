@@ -9,13 +9,27 @@
     "testEnvironment": "node"
   },
   "scripts": {
+    "dev": "babel-watch --watch ./ server.js || true",
     "test": "jest --verbose --silent --i --coverage --forceExit",
-    "start": "node ./server.js"
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./ -s --ignore 'node_modules,build,coverage,.github'",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/server.js"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "express": "^4.16.4"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-watch": "^2.0.7",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
     "jest": "22.4.3"
   }
 }
