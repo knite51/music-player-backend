@@ -1,9 +1,8 @@
-const express = require('express');
+import app from './app';
 
-const app = express();
-const port = 3000;
+const port = process.env.PORT || 7000;
 
-app.get('/', (req, res) => res.send('Hello World!'));
-
-// eslint-disable-next-line no-console
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+/* eslint-disable no-console */
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
+});
