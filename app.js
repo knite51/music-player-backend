@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import { homeRouter } from './routes';
+import { homeRouter, userRouter } from './routes';
 import { routesErrorHandler, allPurposeErrorHandler } from './middlewares';
 
 dotenv.config();
@@ -18,6 +18,7 @@ const baseRoute = '/api';
 
 // Mount the routers on the app object
 app.use(`${baseRoute}/`, homeRouter);
+app.use(`${baseRoute}/user`, userRouter);
 
 // Unknown Route Error Handler
 app.use(routesErrorHandler);
