@@ -7,5 +7,6 @@ services:
 before_script:
   - mysql -e 'CREATE DATABASE music_playertest;'
   - yarn run db:migrate
+stage: teststage
 after_success:
   - coveralls < coverage/lcov.info
