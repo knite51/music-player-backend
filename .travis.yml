@@ -8,5 +8,6 @@ before_script:
   - mysql -e 'CREATE DATABASE music_playertest;'
   - yarn run db:migrate
 stage: teststage
+script: yarn test
 after_success:
   - coveralls < coverage/lcov.info
