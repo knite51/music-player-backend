@@ -21,6 +21,12 @@
     "build": "yarn run clean && yarn run build-babel",
     "start": "yarn run build && node ./build/server.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint",
+      "pre-push": "yarn run test"
+    }
+  },
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-polyfill": "^6.26.0",
