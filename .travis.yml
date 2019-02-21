@@ -5,7 +5,10 @@ cache: yarn
 services:
   - mysql
 before_install:
-  - mysql -e 'CREATE DATABASE music_playertest;'
+  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('12345') WHERE user='ayotunde';\nFLUSH PRIVILEGES;\n" | mysql -u ayotunde
+    - mysql -e 'create database IF NOT EXISTS music_playertest;'
+    - mysql -e "use music_playertest;"
+
 before_script:
   - yarn run db:migrate
 stage: teststage
