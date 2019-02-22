@@ -3,8 +3,12 @@ node_js:
   - '9'
 cache: yarn
 services:
-  - postgresql
-before_script: psql -c 'create database travis_ci_test;' -U postgres
+  - mysql
+before_script:
+  - mysql -u root -e 'CREATE DATABASE mptest;'
+- mysql -u root -e "CREATE USER 'travis'@'localhost' IDENTIFIED BY 'travis';"
+- mysql -u root -e "GRANT ALL ON mptest.* TO 'travis'@'localhost';"
+stage: teststage
 script: yarn test
 after_success:
   - coveralls < coverage/lcov.info
