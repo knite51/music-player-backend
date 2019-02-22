@@ -8,7 +8,6 @@ before_script:
   - mysql -u root -e 'CREATE DATABASE mptest;'
 - mysql -u root -e "CREATE USER 'travis'@'localhost' IDENTIFIED BY 'travis';"
 - mysql -u root -e "GRANT ALL ON mptest.* TO 'travis'@'localhost';"
-stage: teststage
-script: yarn test
+
 after_success:
   - coveralls < coverage/lcov.info
