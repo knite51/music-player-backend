@@ -6,5 +6,6 @@ services:
   - mysql
 before_script:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS mptest;'
+  - yarn run db:migrate
 after_success:
   - coveralls < coverage/lcov.info
