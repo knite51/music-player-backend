@@ -3,10 +3,8 @@ node_js:
   - '9'
 cache: yarn
 services:
-  - postgresql
+  - mysql
 before_script:
-  - psql -c 'create database hbtest;' -U postgres
-stage: teststage
-script: yarn test
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS mptest;'
 after_success:
   - coveralls < coverage/lcov.info
