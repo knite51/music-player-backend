@@ -3,9 +3,10 @@ node_js:
   - '9'
 cache: yarn
 services:
-  - postgresql
+  - mysql
+before_install:
+  - mysql -e 'CREATE DATABASE mptest;'
 before_script:
-  - psql -c 'create database mptest;' -U postgres
   - yarn run db:migrate
 stage: teststage
 script: yarn test
