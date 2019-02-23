@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 
 const UserModel = (sequelize, DataTypes) => {
-  const User = sequelize.define(
+  const Users = sequelize.define(
     'Users',
     {
       id: {
@@ -23,19 +23,19 @@ const UserModel = (sequelize, DataTypes) => {
     {
       hooks: {
         beforeCreate(user) {
-          user.hashPassword();
+          return user.hashPassword();
         }
       }
     }
   );
 
   // Instance methods
-  User.prototype.hashPassword = function hashPassword() {
+  Users.prototype.hashPassword = function hashPassword() {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(9));
     return this.password;
   };
 
-  return User;
+  return Users;
 };
 
 export default UserModel;
