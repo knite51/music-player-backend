@@ -6,7 +6,6 @@ services:
   - postgresql
 before_script:
   - psql -c 'create database hbtest;' -U postgres
-  - npm run db:migrate
 stage: teststage
 script: yarn test
 after_success:
