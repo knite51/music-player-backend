@@ -18,11 +18,6 @@ export const toSentenceCase = value => {
   return `${firstChar}${otherChars}`;
 };
 
-export const uuidTester = inputUUID => {
-  const uuidRegex = /^[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
-  return uuidRegex.test(inputUUID);
-};
-
 export const usernameTester = inputUsername => {
   // must be at least two chars, can have an underscore in between,
   // could have other letters, if nums present, can only end with them.
@@ -35,11 +30,4 @@ export const emailTester = inputEmail => {
   const validEmailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 
   return validEmailRegex.test(inputEmail);
-};
-
-export const imageURLTester = inputEmail => {
-  // eslint-disable-next-line no-control-regex
-  const validImageURLRegex = /^http(s?):\/\/.+\.(gif|png|jpg|jpeg)$/i;
-
-  return validImageURLRegex.test(inputEmail);
 };
