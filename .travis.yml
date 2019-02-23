@@ -7,7 +7,7 @@ services:
 before_script:
   - mysql -u root -e 'CREATE DATABASE mptest;'
   - mysql -u root -e "CREATE USER 'musictravis'@'localhost' IDENTIFIED BY 'musictravis';"
-  - mysql -u root -e "GRANT ALL ON mptest.* TO 'musictravis'@'localhost';"
+  - mysql -u root -e "GRANT ALL PRIVILEGES ON mptest.* TO 'musictravis'@'localhost';"
 stage: teststage
 script: yarn test
 after_success:
