@@ -4,9 +4,8 @@ node_js:
 cache: yarn
 services:
   - mysql
-before_install:
-  - mysql -e 'CREATE DATABASE mptest;'
 before_script:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS music_playerTest;'
   - yarn run db:migrate
 stage: teststage
 script: yarn test
