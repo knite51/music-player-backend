@@ -1,6 +1,6 @@
 import { Op } from 'sequelize';
 import models from '../models';
-import { isEmpty, uuidTester, usernameTester, emailTester } from '../helpers';
+import { isEmpty, usernameTester, emailTester } from '../helpers';
 
 const { Users } = models;
 
@@ -123,21 +123,5 @@ export default {
       return next(error);
     }
     return next();
-  },
-
-  async checkIfUserExists(req, res, next) {
-    const user = await Users.findByPk(req.params.id);
-    if (!user) {
-      const error = new Error(`No user with id ${req.params.id}`);
-      error.status = 404;
-      return next(error);
-    }
-    return next();
-  },
-  ensureUserParamIsValid(req, res, next) {
-    if (uuidTester(req.params.id)) return next();
-    const error = new Error('Invalid uuid user id param');
-    error.status = 400;
-    return next(error);
   }
 };
