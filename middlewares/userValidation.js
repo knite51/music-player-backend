@@ -1,6 +1,6 @@
 import { Op } from 'sequelize';
 import models from '../models';
-import { isEmpty, usernameTester, emailTester } from '../helpers';
+import { isEmpty, usernameTester, emailTester, uuidTester } from '../helpers';
 
 const { Users } = models;
 
@@ -24,6 +24,7 @@ export default {
 
     return next();
   },
+
   checkEmptyUserFields(req, res, next) {
     const emptyPayloadParams = [];
 
@@ -41,6 +42,7 @@ export default {
 
     return next();
   },
+
   async checkIfIdentifierIsInUse(req, res, next) {
     let { username, email } = req.body;
     username = username && username.trim();
@@ -61,6 +63,23 @@ export default {
       return next(error);
     }
     return next();
+  },
+
+  async checkIfUserExists(req, res, next) {
+    const user = await Users.findByPk(req.params.id);
+    if (!user) {
+      const error = new Error(`No user with id ${req.params.id}`);
+      error.status = 404;
+      return next(error);
+    }
+    return next();
+  },
+
+  ensureUserParamIsValid(req, res, next) {
+    if (uuidTester(req.params.id)) return next();
+    const error = new Error('Invalid uuid user id param');
+    error.status = 400;
+    return next(error);
   },
 
   validatePassword(req, res, next) {
@@ -121,6 +140,30 @@ export default {
       const error = new Error(message);
       error.status = 400;
       return next(error);
+    }
+    return next();
+  },
+
+  ensureFalseyValueForDeactivation(req, res, next) {
+    const {
+      body: { isActive }
+    } = req;
+    if (isActive === 'true' || isActive === true) {
+      const error = new Error('Paramaters are incorrect. Try again.');
+      error.status = 403;
+      return next(error);
+    }
+    return next();
+  },
+
+  ensureTruthyValueForReactivation(req, res, next) {
+    const {
+      body: { isActive }
+    } = req;
+    if (isActive === 'false' || isActive === false) {
+      const error = new Error('Paramaters are incorrect. Try again.');
+      error.status = 403;
+      next(error);
     }
     return next();
   }
