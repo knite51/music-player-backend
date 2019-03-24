@@ -1,7 +1,7 @@
 {
   "name": "music-player-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "git@github.com:knite51/music-player-backend.git",
   "author": "kniteDeveloper <knite51@gmail.com>",
   "license": "MIT",
@@ -9,7 +9,7 @@
     "testEnvironment": "node"
   },
   "scripts": {
-    "dev": "babel-watch --watch ./ server.js || true",
+    "dev": "nodemon --exec babel-node ./ server.js",
     "set-node-env": "set NODE_ENV=test",
     "test:dev": "npm run set-node-env && jest --verbose --i --coverage --forceExit",
     "test": "jest --verbose --silent --i --coverage --forceExit",
@@ -35,22 +35,26 @@
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
     "morgan": "^1.9.1",
     "mysql2": "^1.6.5",
     "sequelize": "^4.42.0",
     "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
+    "@babel/node": "7.0.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-watch": "^2.0.7",
+    "coveralls": "^3.0.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
     "faker": "^4.1.0",
     "husky": "^1.3.1",
     "jest": "22.4.3",
+    "nodemon": "^1.18.10",
     "supertest": "^3.4.2"
   }
 }
