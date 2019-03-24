@@ -14,6 +14,11 @@ const UserModel = (sequelize, DataTypes) => {
       email: { type: DataTypes.STRING, unique: true, allowNull: false },
       username: { type: DataTypes.STRING, allowNull: false, unique: true },
       password: { type: DataTypes.STRING, allowNull: false },
+      isActive: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false
+      },
       isAdmin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
@@ -33,6 +38,10 @@ const UserModel = (sequelize, DataTypes) => {
   Users.prototype.hashPassword = function hashPassword() {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(9));
     return this.password;
+  };
+
+  Users.prototype.validPassword = function validPassword(password) {
+    return bcrypt.compareSync(password, this.password);
   };
 
   return Users;
