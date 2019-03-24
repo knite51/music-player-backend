@@ -1,6 +1,15 @@
 import faker from 'faker';
 
 export default {
+  createAdminUser: () => {
+    return {
+      username: 'KniteDeveloperAdmin',
+      email: faker.internet.email(),
+      isAdmin: true,
+      password: 'adminPassword'
+    };
+  },
+
   createRegularUser: () => {
     return {
       username: 'KniteDeveloper',
@@ -8,6 +17,24 @@ export default {
       password: 'regularPassword'
     };
   },
+
+  createRegularUserSecond: () => {
+    return {
+      username: 'KniteDeveloperSecond',
+      email: faker.internet.email(),
+      password: 'regularPasswordSecond'
+    };
+  },
+
+  createInActiveUser: () => {
+    return {
+      username: 'InActiveUser',
+      email: faker.internet.email(),
+      isActive: false,
+      password: 'inactivePassword'
+    };
+  },
+
   createEmptyUserField: () => {
     return {
       username: '',
@@ -15,6 +42,7 @@ export default {
       password: ''
     };
   },
+
   createEmptyUsernameField: () => {
     return {
       username: '',
@@ -22,6 +50,7 @@ export default {
       password: 'notAnEmptyPassword'
     };
   },
+
   createEmptyEmailField: () => {
     return {
       username: 'notAnEmptyUsername',
@@ -29,6 +58,7 @@ export default {
       password: 'notAnEmptyPassword'
     };
   },
+
   createEmptyPasswordField: () => {
     return {
       username: 'notAnEmptyUsername',
@@ -36,24 +66,28 @@ export default {
       password: ''
     };
   },
+
   createWithNoUsername: () => {
     return {
       email: faker.internet.email(),
       password: 'passwordWithNoUsername'
     };
   },
+
   createWithNoEmail: () => {
     return {
       username: 'usernameWithNoEmail',
       password: 'passwordWithNoEmail'
     };
   },
+
   createWithNoPassword: () => {
     return {
       username: 'usernameWithNoPassword',
       email: faker.internet.email()
     };
   },
+
   userWithInvalidUsername: () => {
     return {
       username: '123thomas',
@@ -61,6 +95,7 @@ export default {
       password: 'invalidUsername'
     };
   },
+
   userWithOnlyNumsForUsername: () => {
     return {
       username: '34',
@@ -68,6 +103,7 @@ export default {
       password: 'invalidUsername'
     };
   },
+
   userWithOneCharUsername: () => {
     return {
       username: 'a',
@@ -75,6 +111,7 @@ export default {
       password: 'invalidUsername'
     };
   },
+
   userWithInvalidEmail: () => {
     return {
       username: 'invalidUserEmail',
@@ -82,6 +119,7 @@ export default {
       password: 'invalidEmailPassword'
     };
   },
+
   userWithInvalidPassword: () => {
     return {
       username: 'invalidPasswordUsername',
