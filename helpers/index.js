@@ -3,5 +3,6 @@ export {
   isEmpty,
   toSentenceCase,
   usernameTester,
-  emailTester
+  emailTester,
+  uuidTester
 } from './helperFunctions';
