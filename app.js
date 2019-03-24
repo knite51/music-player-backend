@@ -18,7 +18,7 @@ const baseRoute = '/api';
 
 // Mount the routers on the app object
 app.use(`${baseRoute}/`, homeRouter);
-app.use(`${baseRoute}/user`, userRouter);
+app.use(`${baseRoute}/users`, userRouter);
 
 // Unknown Route Error Handler
 app.use(routesErrorHandler);
